@@ -1,6 +1,5 @@
-import { Github, Menu } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import { Button } from '../components/ui/button'
-import { Input } from '../components/ui/input'
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -8,12 +7,11 @@ import {
   NavigationMenuList,
 } from '../components/ui/navigation-menu'
 import { Sheet, SheetContent, SheetTrigger } from '../components/ui/sheet'
-import { Separator } from '../components/ui/separator'
 
 export const Navbar = () => {
   return (
     <header className="w-full border-b bg-background">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="container mx-auto flex h-16 items-center px-4 gap-20">
         {/* Logo */}
         <div className="flex items-center gap-2 text-xl font-bold">
           📚 BookStore
@@ -23,31 +21,27 @@ export const Navbar = () => {
         <NavigationMenu className="hidden md:block">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuLink className="px-3 py-2" href="#">
+              <NavigationMenuLink className="px-3 py-2 font-semibold" href="#">
                 Home
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink className="px-3 py-2" href="#books">
-                Books
+              <NavigationMenuLink className="px-3 py-2 font-semibold" href="#">
+                All Books
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink className="px-3 py-2" href="#about">
-                About
+              <NavigationMenuLink className="px-3 py-2 font-semibold" href="#">
+                Add Book
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink className="px-3 py-2 font-semibold" href="#">
+                Borrow Summary
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-
-        {/* Right Side */}
-        <div className="hidden md:flex items-center gap-3">
-          <Input placeholder="Search books..." className="w-56" />
-          <Button variant="outline" size="icon">
-            <Github className="h-4 w-4" />
-          </Button>
-          <Button>Login</Button>
-        </div>
 
         {/* Mobile Menu */}
         <Sheet>
@@ -62,14 +56,14 @@ export const Navbar = () => {
                 Home
               </a>
               <a href="#books" className="text-sm font-medium">
-                Books
+                Add Book
               </a>
               <a href="#about" className="text-sm font-medium">
-                About
+                All Books
               </a>
-              <Separator />
-              <Input placeholder="Search books..." />
-              <Button className="w-full">Login</Button>
+              <a href="#about" className="text-sm font-medium">
+                Borrow Summary
+              </a>
             </div>
           </SheetContent>
         </Sheet>
