@@ -21,22 +21,31 @@ export const Navbar = () => {
         <NavigationMenu className="hidden md:block">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuLink className="px-3 py-2 font-semibold" href="#">
+              <NavigationMenuLink className="px-3 py-2 font-semibold" href="/">
                 Home
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink className="px-3 py-2 font-semibold" href="#">
+              <NavigationMenuLink
+                className="px-3 py-2 font-semibold"
+                href="/books"
+              >
                 All Books
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink className="px-3 py-2 font-semibold" href="#">
+              <NavigationMenuLink
+                className="px-3 py-2 font-semibold"
+                href="/add-book"
+              >
                 Add Book
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink className="px-3 py-2 font-semibold" href="#">
+              <NavigationMenuLink
+                className="px-3 py-2 font-semibold"
+                href="/borrow-summery"
+              >
                 Borrow Summary
               </NavigationMenuLink>
             </NavigationMenuItem>

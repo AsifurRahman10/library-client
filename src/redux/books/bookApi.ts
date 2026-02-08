@@ -8,7 +8,7 @@ export const bookApi = createApi({
   tagTypes: ['Books'],
   endpoints: (build) => ({
     getBooks: build.query({
-      query: ({ page, limit }) => ({
+      query: ({ page, limit = 10 }) => ({
         url: '/book',
         params: { page, limit },
       }),
