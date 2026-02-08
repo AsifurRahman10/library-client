@@ -7,6 +7,7 @@ import { AddBooksModal } from '../component/AddBooksModal'
 export const AllBooks = () => {
   const [page, setPage] = useState(1)
   const [modalOpen, setModalOpen] = useState(false)
+  const [selectedId, setSelectedId] = useState(null)
   const { data: booksData, isLoading, isFetching } = useGetBooksQuery({ page })
   const books = booksData?.data?.data || []
   const meta = booksData?.data?.meta
@@ -18,7 +19,11 @@ export const AllBooks = () => {
         <Button onClick={() => setModalOpen(true)}>Add book</Button>
       </div>
       {isFetching && isLoading && <div>Updating...</div>}
-      <BooksTable books={books} />
+      <BooksTable
+        books={books}
+        setSelectedId={setSelectedId}
+        setModalOpen={setModalOpen}
+      />
 
       <div className="flex items-center justify-between mt-4">
         <div className="text-sm text-muted-foreground">
@@ -43,7 +48,11 @@ export const AllBooks = () => {
           </Button>
         </div>
       </div>
-      <AddBooksModal open={modalOpen} setModalOpen={setModalOpen} />
+      <AddBooksModal
+        selectedId={selectedId}
+        open={modalOpen}
+        setModalOpen={setModalOpen}
+      />
     </div>
   )
 }

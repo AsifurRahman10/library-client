@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { Button } from '../components/ui/button'
 import {
   Table,
   TableBody,
@@ -9,7 +10,7 @@ import {
   TableRow,
 } from '../components/ui/table'
 
-export const BooksTable = ({ books }: any) => {
+export const BooksTable = ({ books, setSelectedId, setModalOpen }: any) => {
   return (
     <div className="border rounded-lg">
       <Table>
@@ -21,6 +22,8 @@ export const BooksTable = ({ books }: any) => {
             <TableHead>ISBN</TableHead>
             <TableHead>Copies</TableHead>
             <TableHead>Status</TableHead>
+            <TableHead>Action</TableHead>
+            {/* <TableHead>Status</TableHead> */}
           </TableRow>
         </TableHeader>
 
@@ -40,6 +43,18 @@ export const BooksTable = ({ books }: any) => {
                 ) : (
                   <span className="text-red-600 font-semibold">Out</span>
                 )}
+              </TableCell>
+              <TableCell>
+                <Button
+                  onClick={() => {
+                    setSelectedId(book._id)
+                    setModalOpen(true)
+                  }}
+                  variant="outline"
+                  size="sm"
+                >
+                  Edit Books
+                </Button>
               </TableCell>
             </TableRow>
           ))}

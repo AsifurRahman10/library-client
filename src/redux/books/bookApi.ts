@@ -18,7 +18,7 @@ export const bookApi = createApi({
       query: ({ id }) => ({
         url: `/book/${id}`,
       }),
-      providesTags: (result, error, arg) => [{ type: 'Books', id: arg.id }],
+      providesTags: (_result, _error, arg) => [{ type: 'Books', id: arg.id }],
     }),
     createBook: build.mutation({
       query: (bookData: TBooks) => ({
