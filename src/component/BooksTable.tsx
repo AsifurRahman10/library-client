@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { useState } from 'react'
 import { Button } from '../components/ui/button'
 import {
   Table,
@@ -9,8 +10,16 @@ import {
   TableHeader,
   TableRow,
 } from '../components/ui/table'
+import { BorrowModal } from './BorrowModal'
 
 export const BooksTable = ({ books, setSelectedId, setModalOpen }: any) => {
+  const [open, setOpen] = useState(false)
+  const [selectedBookId, setSelectedBookId] = useState<string>('')
+
+  const handleBorrowClick = (bookId: string) => {
+    setSelectedBookId(bookId)
+    setOpen(true)
+  }
   return (
     <div className="border rounded-lg">
       <Table>
@@ -52,14 +61,23 @@ export const BooksTable = ({ books, setSelectedId, setModalOpen }: any) => {
                   }}
                   variant="outline"
                   size="sm"
+                  className="mr-3"
                 >
                   Edit Books
+                </Button>
+                <Button
+                  onClick={() => handleBorrowClick(book._id)}
+                  variant="outline"
+                  size="sm"
+                >
+                  Borrow
                 </Button>
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      <BorrowModal open={open} setOpen={setOpen} bookId={selectedBookId} />
     </div>
   )
 }
