@@ -15,7 +15,7 @@ export const borrowApi = createApi({
       }),
       invalidatesTags: ['Borrow'],
     }),
-    borrowSummery: build.query({
+    borrowSummery: build.query<unknown, void>({
       query: () => ({
         url: `/borrow/borrow-summary`,
       }),
