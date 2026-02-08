@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { useGetBooksQuery } from '../redux/books/bookApi'
 import { BooksTable } from '../component/BooksTable'
 import { Button } from '../components/ui/button'
+import { AddBooksModal } from '../component/AddBooksModal'
 
 export const AllBooks = () => {
   const [page, setPage] = useState(1)
+  const [modalOpen, setModalOpen] = useState(false)
   const { data: booksData, isLoading, isFetching } = useGetBooksQuery({ page })
   const books = booksData?.data?.data || []
   const meta = booksData?.data?.meta
@@ -13,12 +15,12 @@ export const AllBooks = () => {
       {/* AllBooks */}
       <div className="flex justify-end my-3">
         <div></div>
-        <Button>Add book</Button>
+        <Button onClick={() => setModalOpen(true)}>Add book</Button>
       </div>
       {isFetching && isLoading && <div>Updating...</div>}
-      <BooksTable books={books?.data} />
+      <BooksTable books={books} />
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mt-4">
         <div className="text-sm text-muted-foreground">
           Page {meta?.page} of {meta?.totalPage}
         </div>
@@ -41,6 +43,7 @@ export const AllBooks = () => {
           </Button>
         </div>
       </div>
+      <AddBooksModal open={modalOpen} setModalOpen={setModalOpen} />
     </div>
   )
 }

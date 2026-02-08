@@ -33,14 +33,14 @@ export const Navbar = () => {
                 All Books
               </NavigationMenuLink>
             </NavigationMenuItem>
-            <NavigationMenuItem>
+            {/* <NavigationMenuItem>
               <NavigationMenuLink
                 className="px-3 py-2 font-semibold"
                 href="/add-book"
               >
                 Add Book
               </NavigationMenuLink>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
             <NavigationMenuItem>
               <NavigationMenuLink
                 className="px-3 py-2 font-semibold"
